@@ -1,11 +1,13 @@
 /**
- * Created by will on 29/09/16.
+ * Created by 2898807 on 23/09/2016.
  */
+
 var mongoose = require('mongoose');
 
-var PartidaSchema = mongoose.Schema({
+
+var PartidaSchema = new mongoose.Schema({
     jogador: String,
-    pontos: Number
+    pontos: Number,
 });
 
-mongoose.exports('Partida',PartidaSchema);
+mongoose.model('Partida',PartidaSchema);
