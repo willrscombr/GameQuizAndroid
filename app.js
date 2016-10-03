@@ -36,6 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/partida', routes);
+app.use('/partida/remove',routes);
+app.use('/partida/remove/nome',routes);
+app.use('/partidas/remove',routes);
 
 
 // catch 404 and forward to error handler

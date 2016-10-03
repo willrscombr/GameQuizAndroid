@@ -36,6 +36,38 @@ router.get('/partidas',function (req,res) {
 
 });
 
+router.get('/partida/remove',function (req,res) {
+
+  Partida.remove({
+    id: req.query.id
+
+  },function(err,partidas){
+    if (err){
+      res.send(err);
+    }
+    res.json(partidas);
+  });
+});
+
+router.get('/partida/remove/nome',function (req,res) {
+
+  Partida.remove({
+    jogador: req.query.jogador
+
+  },function(err,partidas){
+    if (err){
+      res.send(err);
+    }
+    res.json(partidas);
+  });
+});
+
+router.get('/partidas/remove',function (req,res) {
+  Partida.remove({},callback);
+  res.json({removido:true});
+});
+
+
 
 
 module.exports = router;
