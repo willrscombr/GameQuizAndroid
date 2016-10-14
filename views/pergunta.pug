@@ -2,23 +2,30 @@ extends layout
 
 block content
 
-    form(method='POST', action='/pergunta')
-        div.form-group
-            label(for='questao') Questão
-            input#questao.form-control(name='questao',placeholder='', type='text')
-        div.form-group
-            label(for='resposta1') Alternativa 1
-            input#resposta1.form-control(name='resposta1',placeholder='', type='text')
-        div.form-group
-            label(for='resposta2') Alternativa 2
-            input#resposta2.form-control(name='resposta2',placeholder='', type='text')
-        div.form-group
-            label(for='resposta3') Alternativa 3
-            input#resposta3.form-control(name='resposta3',placeholder='', type='text')
-        div.form-group
-            label(for='resposta4') Alternativa 4
-            input#resposta4.form-control(name='resposta4',placeholder='', type='text')
-        div.form-group
-            label(for='respostacerta') Alternativa Correta
-            input#respostacerta.form-control(name='respostacerta',placeholder='', type='text')
-        button.btn.btn-default(type='submit') Salvar
+
+    div.row
+        div.col-xs-3
+        div.col-xs-6
+            h1 Cadastro de Perguntas
+            div.panel
+                form(method='POST', action='/pergunta')
+                    div.form-group
+                        label(for='questao') Questão
+                        input#questao.form-control(name='questao',placeholder='', type='text')
+                    div.form-group
+                        label(for='resposta1') Alternativa 1
+                        input#resposta1.form-control(name='resposta1',placeholder='', type='text')
+                    div.form-group
+                        label(for='resposta2') Alternativa 2
+                        input#resposta2.form-control(name='resposta2',placeholder='', type='text')
+                    div.form-group
+                        label(for='resposta3') Alternativa 3
+                        input#resposta3.form-control(name='resposta3',placeholder='', type='text')
+                    div.form-group
+                        label(for='resposta4') Alternativa 4
+                        input#resposta4.form-control(name='resposta4',placeholder='', type='text')
+                    div.form-group
+                        label(for='respostacerta') Alternativa Correta
+                        input#respostacerta.form-control(name='respostacerta',placeholder='', type='text')
+                    button.btn.btn-default(type='submit') Salvar
+        div.col-xs-3

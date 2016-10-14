@@ -9,17 +9,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/partidabd');
 require('./model/Partida');
+require('./model/Pergunta');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var partidas = require('./routes/partidas');
 
 var app = express();
-
-
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

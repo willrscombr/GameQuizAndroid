@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Partida = mongoose.model('Partida');
+var Pergunta = mongoose.model('Pergunta');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -22,7 +23,23 @@ router.get('/pergunta',function (req,res,next) {
 });
 router.post('/pergunta',function (req,res,next) {
   var pergunta = req.body;
-  res.json(pergunta);
+  Pergunta.create(pergunta,function (err, pergunta) {
+    if(err) {
+      res.send(err);
+      console.log(err);
+    }
+    res.json(pergunta);
+  });
+
+});
+router.get('/perguntas',function (req,res) {
+  Pergunta.find(function (err,perguntas) {
+    if(err){
+      res.send(err);
+    }
+    res.json(perguntas);
+  });
+
 });
 
 router.get('/partida',function (req,res) {
@@ -35,8 +52,8 @@ router.get('/partida',function (req,res) {
     done:false
   },function(err,partidas){
     if (err){
-      res.send(err);
-    }
+      console.log(err);
+    }else
     res.json(partidas);
   });
 
