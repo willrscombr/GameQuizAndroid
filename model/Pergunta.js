@@ -15,6 +15,6 @@ var PerguntaSchema = new mongoose.Schema({
     resposta3: String,
     resposta4: String,
     respostacerta: Number
-},{_id:false, __v:false});
+},{_id:false, versionkey:false});
 PerguntaSchema.plugin(AutoIncrement,{inc_field: 'id'});
 mongoose.model('Pergunta',PerguntaSchema);

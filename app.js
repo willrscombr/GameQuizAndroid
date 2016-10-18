@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 
 //configurar mongo
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/partidabd');
+mongoose.connect('mongodb://localhost:27017/partidabd',function (err) {
+    console.log(err);
+});
 require('./model/Partida');
 require('./model/Pergunta');
+require('./model/Login');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -38,6 +41,8 @@ app.use('/partida/remove/nome',routes);
 app.use('/partidas/remove',routes);
 app.use('/login',routes);
 app.use('/pergunta',routes);
+app.use('/api',routes);
+app.use('/api/login',routes);
 
 
 // catch 404 and forward to error handler

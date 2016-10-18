@@ -11,6 +11,6 @@ var PartidaSchema = new mongoose.Schema({
     idp: Number,
     jogador: String,
     pontos: Number,
-},{_id:false, __v:false});
+},{ versionkey:false});
 PartidaSchema.plugin(AutoIncrement,{inc_field: 'idp'});
 mongoose.model('Partida',PartidaSchema);

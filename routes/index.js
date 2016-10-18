@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Partida = mongoose.model('Partida');
 var Pergunta = mongoose.model('Pergunta');
+var Login = mongoose.model('Login');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,7 +33,7 @@ router.post('/pergunta',function (req,res,next) {
   });
 
 });
-router.get('/perguntas',function (req,res) {
+router.get('/api/perguntas',function (req,res) {
   Pergunta.find(function (err,perguntas) {
     if(err){
       res.send(err);
@@ -42,7 +43,7 @@ router.get('/perguntas',function (req,res) {
 
 });
 
-router.get('/partida',function (req,res) {
+router.get('/api/partida',function (req,res) {
   var jogador = req.query.jogador;
   var pontos =  req.query.pontos;
 
@@ -59,7 +60,7 @@ router.get('/partida',function (req,res) {
 
 });
 
-router.get('/partidas',function (req,res) {
+router.get('/api/partidas',function (req,res) {
 
   Partida.find(function (err,partidas) {
     if(err){
@@ -70,7 +71,7 @@ router.get('/partidas',function (req,res) {
 
 });
 
-router.get('/partida/remove',function (req,res) {
+router.get('/api/partida/remove',function (req,res) {
 
   Partida.remove({
     id: req.query.id
@@ -83,7 +84,7 @@ router.get('/partida/remove',function (req,res) {
   });
 });
 
-router.get('/partida/remove/nome',function (req,res) {
+router.get('/api/partida/remove/nome',function (req,res) {
 
   Partida.remove({
     jogador: req.query.jogador
@@ -96,9 +97,17 @@ router.get('/partida/remove/nome',function (req,res) {
   });
 });
 
-router.get('/partidas/remove',function (req,res) {
+router.get('/api/partidas/remove',function (req,res) {
   Partida.remove({},callback);
   res.json({removido:true});
+});
+router.get('api/login/',function (req,res,next) {
+  Login.find(req.query,function (err,login) {
+    if(err)
+      console.error(err);
+    else
+      res.json(login);
+  });
 });
 
 
