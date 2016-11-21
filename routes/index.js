@@ -67,7 +67,7 @@ router.get('/api/partidas',function (req,res) {
       res.send(err);
     }
     res.json(partidas);
-  });
+  }).sort({pontos:-1});
 
 });
 
@@ -98,8 +98,14 @@ router.get('/api/partida/remove/nome',function (req,res) {
 });
 
 router.get('/api/partidas/remove',function (req,res) {
-  Partida.remove({},callback);
-  res.json({removido:true});
+  Partida.remove({},function (err,partidas) {
+    if(err){
+      console.log(err);
+    }else{
+      res.json({removidos:true});
+    }
+  });
+
 });
 router.get('api/login/',function (req,res,next) {
   Login.find(req.query,function (err,login) {
